@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHYS 201: Electromagnetism Final Exam Prep Hub</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            700: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- MathJax for LaTeX Rendering -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col tex2jax_process">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-slate-900 text-white shadow-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="p-2 bg-blue-600 rounded-lg">
+                        <i data-lucide="zap" class="w-6 h-6 text-yellow-300"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold tracking-tight text-white">PHYS 201 Prep Hub</h1>
+                        <p class="text-xs text-blue-300">Electromagnetism Final Exam Master Study Suite</p>
+                    </div>
+                </div>
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex space-x-1">
+                    <button onclick="switchTab('problems')" id="tab-btn-problems" class="tab-btn px-4 py-2 text-sm font-medium rounded-md transition-colors bg-blue-600 text-white">
+                        <i data-lucide="book-open" class="inline w-4 h-4 mr-1"></i> Problem Deconstructions
+                    </button>
+                    <button onclick="switchTab('formulas')" id="tab-btn-formulas" class="tab-btn px-4 py-2 text-sm font-medium rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
+                        <i data-lucide="file-text" class="inline w-4 h-4 mr-1"></i> Formula Sheet
+                    </button>
+                    <button onclick="switchTab('simulators')" id="tab-btn-simulators" class="tab-btn px-4 py-2 text-sm font-medium rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
+                        <i data-lucide="sliders" class="inline w-4 h-4 mr-1"></i> Physics Calculators
+                    </button>
+                    <button onclick="switchTab('quiz')" id="tab-btn-quiz" class="tab-btn px-4 py-2 text-sm font-medium rounded-md text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
+                        <i data-lucide="check-circle-2" class="inline w-4 h-4 mr-1"></i> Practice Drills
+                    </button>
+                </nav>
+            </div>
+        </div>
+        <!-- Mobile Navigation Bar -->
+        <div class="md:hidden flex justify-around border-t border-slate-800 bg-slate-900 py-2 text-xs">
+            <button onclick="switchTab('problems')" class="text-blue-400 font-medium">Problems</button>
+            <button onclick="switchTab('formulas')" class="text-slate-300">Formulas</button>
+            <button onclick="switchTab('simulators')" class="text-slate-300">Calculators</button>
+            <button onclick="switchTab('quiz')" class="text-slate-300">Practice Drills</button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- ================= TAB 1: PROBLEM DECONSTRUCTIONS ================= -->
+        <section id="tab-problems" class="tab-content space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900">Final Practice Problem Walkthroughs</h2>
+                        <p class="text-slate-600 text-sm mt-1">Select a question from your practice exam set to inspect key physics principles, full derivations, mathematical steps, and exam pitfall tips.</p>
+                    </div>
+                    <div class="w-full md:w-72">
+                        <label for="problem-select" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Choose Question</label>
+                        <select id="problem-select" onchange="loadProblem(this.value)" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 font-medium">
+                            <option value="1">Question 1: Switching Circuit & RC Discharge</option>
+                            <option value="2">Question 2: Velocity Selector & Mass Spectrometer</option>
+                            <option value="3">Question 3: Off-Axis Cavity Cylindrical Current</option>
+                            <option value="4">Question 4: Faraday Induction (Moving Loop near Wire)</option>
+                            <option value="5">Question 5: Toroidal Inductor & RL Transient</option>
+                            <option value="6">Question 6: Ampère-Maxwell & Displacement Current</option>
+                            <option value="7">Question 7: Biot-Savart for Annular-Sector Wire</option>
+                            <option value="8">Question 8: Magnetic Dipole Torque & Oscillations</option>
+                            <option value="9">Question 9: Three Parallel Wires & Equilibrium Stability</option>
+                            <option value="10">Question 10: Sliding Rod, Motional EMF & Braking</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Problem Container Dynamic Output -->
+            <div id="problem-display" class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <!-- Content populated via JavaScript -->
+            </div>
+        </section>
+
+
+        <!-- ================= TAB 2: FORMULA CHEAT SHEET ================= -->
+        <section id="tab-formulas" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">PHYS 201 Core Law & Formula Cheat Sheet</h2>
+                <p class="text-slate-600 text-sm mt-1">Essential equations, vector relationships, and fundamental principles across all 10 exam problem domains.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-2 border-b pb-2 border-slate-100">
+                        <i data-lucide="cpu" class="w-5 h-5 text-blue-600"></i>
+                        <h3 class="font-bold text-slate-900">1. Circuits (RC & RL)</h3>
+                    </div>
+                    <ul class="text-xs text-slate-700 space-y-2">
+                        <li><strong>RC Discharge:</strong> $V_C(t) = V_0 e^{-t/\tau}$, $\tau = R_{eq}C$</li>
+                        <li><strong>Stored Energy:</strong> $U_C = \frac{1}{2} C V^2 = \frac{Q^2}{2C}$</li>
+                        <li><strong>RL Growth:</strong> $I(t) = \frac{\mathcal{E}}{R}(1 - e^{-Rt/L})$, $\tau_L = \frac{L}{R}$</li>
+                        <li><strong>Inductor Energy:</strong> $U_B = \frac{1}{2} L I^2$</li>
+                        <li><strong>Power Balance:</strong> $\mathcal{E} I = I^2 R + \frac{dU_B}{dt}$</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-2 border-b pb-2 border-slate-100">
+                        <i data-lucide="compass" class="w-5 h-5 text-indigo-600"></i>
+                        <h3 class="font-bold text-slate-900">2. Lorentz Force & Particle Motion</h3>
+                    </div>
+                    <ul class="text-xs text-slate-700 space-y-2">
+                        <li><strong>Lorentz Force:</strong> $\vec{F} = q(\vec{E} + \vec{v} \times \vec{B})$</li>
+                        <li><strong>Velocity Selector:</strong> $v = \frac{E}{B_1}$ (when $\vec{F}_E + \vec{F}_B = 0$)</li>
+                        <li><strong>Cyclotron Radius:</strong> $r = \frac{mv}{qB_2}$</li>
+                        <li><strong>Impact Distance:</strong> $x = 2r = \frac{2mv}{qB_2}$</li>
+                        <li><strong>Mass Resolution:</strong> $\frac{\Delta x}{x} = \frac{\Delta m}{m}$</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-2 border-b pb-2 border-slate-100">
+                        <i data-lucide="disc" class="w-5 h-5 text-emerald-600"></i>
+                        <h3 class="font-bold text-slate-900">3. Ampère's Law & Superposition</h3>
+                    </div>
+                    <ul class="text-xs text-slate-700 space-y-2">
+                        <li><strong>Ampère's Law:</strong> $\oint \vec{B} \cdot d\vec{l} = \mu_0 I_{enc}$</li>
+                        <li><strong>Uniform Cylinder Inside:</strong> $\vec{B} = \frac{\mu_0 J}{2} \hat{z} \times \vec{r}$</li>
+                        <li><strong>Long Wire Outside:</strong> $B = \frac{\mu_0 I}{2\pi r}$</li>
+                        <li><strong>Toroid Field:</strong> $B(r) = \frac{\mu_0 N I}{2\pi r}$</li>
+                        <li><strong>Superposition Principle:</strong> Cavity = Full (+J) + Cavity (−J)</li>
+                    </ul>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-2 border-b pb-2 border-slate-100">
+                        <i data-lucide="rotate-cw" class="w-5 h-5 text-amber-600"></i>
+                        <h3 class="font-bold text-slate-900">4. Faraday's Law & Motional EMF</h3>
+                    </div>
+                    <ul class="text-xs text-slate-700 space-y-2">
+                        <li><strong>Magnetic Flux:</strong> $\Phi_B = \int \vec{B} \cdot d\vec{A}$</li>
+                        <li><strong>Faraday's Law:</strong> $\mathcal{E}_{ind} = -\frac{d\Phi_B}{dt}$</li>
+                        <li><strong>Motional EMF:</strong> $\mathcal{E} = \oint (\vec{v} \times \vec{B}) \cdot d\vec{l} = B \ell v$</li>
+                        <li><strong>Lenz's Law:</strong> Induced $I$ creates flux opposing the flux change.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-2 border-b pb-2 border-slate-100">
+                        <i data-lucide="waves" class="w-5 h-5 text-rose-600"></i>
+                        <h3 class="font-bold text-slate-900">5. Maxwell-Ampère Law</h3>
+                    </div>
+                    <ul class="text-xs text-slate-700 space-y-2">
+                        <li><strong>General Law:</strong> $\oint \vec{B} \cdot d\vec{l} = \mu_0 I_{cond} + \mu_0 \varepsilon_0 \frac{d\Phi_E}{dt}$</li>
+                        <li><strong>Displacement Current:</strong> $I_D = \varepsilon_0 \frac{d\Phi_E}{dt}$</li>
+                        <li><strong>Parallel Capacitor ($r < R$):</strong> $B(r) = \frac{\mu_0 I_{cond} r}{2\pi R^2}$</li>
+                        <li><strong>Outside Capacitor ($r > R$):</strong> $B(r) = \frac{\mu_0 I_{cond}}{2\pi r}$</li>
+                    </ul>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-2 border-b pb-2 border-slate-100">
+                        <i data-lucide="activity" class="w-5 h-5 text-purple-600"></i>
+                        <h3 class="font-bold text-slate-900">6. Biot-Savart & Dipoles</h3>
+                    </div>
+                    <ul class="text-xs text-slate-700 space-y-2">
+                        <li><strong>Biot-Savart Law:</strong> $d\vec{B} = \frac{\mu_0 I}{4\pi} \frac{d\vec{l} \times \hat{r}}{r^2}$</li>
+                        <li><strong>Circular Arc Field:</strong> $B_{center} = \frac{\mu_0 I \theta}{4\pi R}$</li>
+                        <li><strong>Magnetic Moment:</strong> $\vec{\mu} = N I A \hat{n}$</li>
+                        <li><strong>Torque & Energy:</strong> $\vec{\tau} = \vec{\mu} \times \vec{B}$, $U = -\vec{\mu} \cdot \vec{B}$</li>
+                        <li><strong>Small Oscillations:</strong> $\ddot{\theta} + \omega^2 \theta = 0 \implies \omega = \sqrt{\frac{NIAB}{I_{rot}}}$</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= TAB 3: INTERACTIVE CALCULATORS ================= -->
+        <section id="tab-simulators" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900">Interactive Exam Calculators & Physics Explorers</h2>
+                <p class="text-slate-600 text-sm mt-1">Adjust parameters to see numerical results and physical trends based on your 10 final exam problems.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Calculator 1: Mass Spectrometer -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-2 border-b pb-3 border-slate-100">
+                        <i data-lucide="target" class="w-5 h-5 text-blue-600"></i>
+                        <h3 class="font-bold text-slate-800">Q2: Mass Spectrometer & Impact Separation</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <label class="font-semibold text-slate-600">Electric Field E (V/m)</label>
+                            <input type="number" id="sim-q2-e" value="10000" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">B1 Selector Field (T)</label>
+                            <input type="number" id="sim-q2-b1" value="0.1" step="0.01" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">B2 Analyzer Field (T)</label>
+                            <input type="number" id="sim-q2-b2" value="0.2" step="0.01" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">Ion Mass m (amu)</label>
+                            <input type="number" id="sim-q2-m" value="20" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                    </div>
+                    <button onclick="calcQ2()" class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold">Compute Selected Speed & Detector Impact</button>
+                    <div id="sim-q2-result" class="p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-900 space-y-1">
+                        <div>Selected Speed $v$: <span class="font-bold" id="q2-out-v">100,000 m/s</span></div>
+                        <div>Trajectory Radius $r$: <span class="font-bold" id="q2-out-r">0.103 m</span></div>
+                        <div>Impact Separation $\Delta x / \Delta m$: <span class="font-bold" id="q2-out-dx">1.03 cm/amu</span></div>
+                    </div>
+                </div>
+
+                <!-- Calculator 2: Magnetic Braking -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-2 border-b pb-3 border-slate-100">
+                        <i data-lucide="gauge" class="w-5 h-5 text-emerald-600"></i>
+                        <h3 class="font-bold text-slate-800">Q10: Sliding Rod Magnetic Braking</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <label class="font-semibold text-slate-600">Pulling Force F0 (N)</label>
+                            <input type="number" id="sim-q10-f" value="0.5" step="0.1" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">Magnetic Field B (T)</label>
+                            <input type="number" id="sim-q10-b" value="0.8" step="0.1" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">Rail Separation ℓ (m)</label>
+                            <input type="number" id="sim-q10-l" value="0.25" step="0.05" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">Resistance R (Ω)</label>
+                            <input type="number" id="sim-q10-r" value="2.0" step="0.1" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                    </div>
+                    <button onclick="calcQ10()" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold">Compute Terminal Speed & Time Constant</button>
+                    <div id="sim-q10-result" class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-900 space-y-1">
+                        <div>Terminal Speed $v_{term}$: <span class="font-bold" id="q10-out-v">25.0 m/s</span></div>
+                        <div>Dissipated Power $I^2 R$: <span class="font-bold" id="q10-out-p">12.5 W</span></div>
+                    </div>
+                </div>
+
+                <!-- Calculator 3: Small Oscillations -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-2 border-b pb-3 border-slate-100">
+                        <i data-lucide="activity" class="w-5 h-5 text-purple-600"></i>
+                        <h3 class="font-bold text-slate-800">Q8 & Q9: Magnetic Small Oscillations</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <label class="font-semibold text-slate-600">Turns N</label>
+                            <input type="number" id="sim-q8-n" value="100" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">Current I (A)</label>
+                            <input type="number" id="sim-q8-i" value="2.0" step="0.1" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">Field B (T)</label>
+                            <input type="number" id="sim-q8-b" value="0.5" step="0.05" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">Moment of Inertia I_rot (kg·m²)</label>
+                            <input type="number" id="sim-q8-I" value="0.01" step="0.001" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                    </div>
+                    <button onclick="calcQ8()" class="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-xs font-semibold">Compute Frequency & Period</button>
+                    <div id="sim-q8-result" class="p-3 bg-purple-50 border border-purple-200 rounded-lg text-xs text-purple-900 space-y-1">
+                        <div>Angular Frequency $\omega$: <span class="font-bold" id="q8-out-w">31.62 rad/s</span></div>
+                        <div>Oscillation Period $T$: <span class="font-bold" id="q8-out-t">0.199 s</span></div>
+                    </div>
+                </div>
+
+                <!-- Calculator 4: Toroidal Inductor -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-2 border-b pb-3 border-slate-100">
+                        <i data-lucide="circle-dot" class="w-5 h-5 text-amber-600"></i>
+                        <h3 class="font-bold text-slate-800">Q5: Toroidal Inductor Properties</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <label class="font-semibold text-slate-600">Turns N</label>
+                            <input type="number" id="sim-q5-n" value="500" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">Height h (m)</label>
+                            <input type="number" id="sim-q5-h" value="0.03" step="0.01" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">Inner Radius a (m)</label>
+                            <input type="number" id="sim-q5-a" value="0.05" step="0.01" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                        <div>
+                            <label class="font-semibold text-slate-600">Outer Radius b (m)</label>
+                            <input type="number" id="sim-q5-b" value="0.10" step="0.01" class="w-full mt-1 p-2 border rounded border-slate-300">
+                        </div>
+                    </div>
+                    <button onclick="calcQ5()" class="w-full py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-semibold">Compute Inductance L</button>
+                    <div id="sim-q5-result" class="p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900 space-y-1">
+                        <div>Self Inductance $L$: <span class="font-bold" id="q5-out-l">1.04 mH</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= TAB 4: PRACTICE DRILLS ================= -->
+        <section id="tab-quiz" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900">Exam Conceptual Knowledge Checkers</h2>
+                        <p class="text-slate-600 text-sm mt-1">Test your understanding of high-frequency exam pitfalls and key principles.</p>
+                    </div>
+                    <div id="quiz-score" class="px-4 py-2 bg-blue-50 text-blue-700 font-bold rounded-lg border border-blue-200 text-sm">
+                        Score: 0 / 0
+                    </div>
+                </div>
+            </div>
+
+            <div id="quiz-container" class="space-y-4">
+                <!-- Dynamically generated practice items -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-6 mt-12 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="font-medium text-slate-300">PHYS 201: General Physics II (Electromagnetism) Exam Preparation Suite</p>
+            <p class="mt-1 text-slate-500">Based on standard calculus-based electromagnetism final examination problems.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data and Controller -->
+    <script>
+        // Problem Data Store
+        const problemsData = {
+            "1": {
+                title: "Question 1 – Switching Circuit with a Capacitor",
+                tags: ["RC Circuits", "Energy Conservation", "Parallel Resistance"],
+                statement: "An ideal battery of emf $\\mathcal{E}$ is connected to a circuit. Switch has been in position $a$ for a long time charging $C$ through resistor $R$. At $t=0$, it moves instantaneously to position $b$, disconnecting the battery and discharging $C$ through resistors $2R$ and $3R$ in parallel.",
+                subparts: [
+                    {
+                        part: "(a) Initial Voltage & Charge",
+                        q: "Find $V_C(0^-)$ and $Q(0^-)$ just before the switch moves.",
+                        ans: "$$V_C(0^-) = \\mathcal{E}, \\quad Q(0^-) = C\\mathcal{E}$$",
+                        explain: "After a very long time in position $a$, the capacitor is fully charged and no steady current flows through $R$. Thus there is zero voltage drop across $R$, and the full battery emf appears across $C$."
+                    },
+                    {
+                        part: "(b) Equivalent Resistance & Time Constant",
+                        q: "Find the equivalent resistance seen by the capacitor for $t > 0$ and the time constant $\\tau$.",
+                        ans: "$$R_{eq} = \\frac{(2R)(3R)}{2R + 3R} = \\frac{6}{5}R, \\quad \\tau = R_{eq}C = \\frac{6RC}{5}$$",
+                        explain: "In position $b$, the capacitor discharges through $2R$ and $3R$ connected in parallel."
+                    },
+                    {
+                        part: "(c) Discharge Variables for t > 0",
+                        q: "Find $Q(t)$, $V_C(t)$, and total discharge current magnitude $I(t)$.",
+                        ans: "$$V_C(t) = \\mathcal{E}e^{-\\frac{5t}{6RC}}, \\quad Q(t) = C\\mathcal{E}e^{-\\frac{5t}{6RC}}, \\quad I(t) = \\frac{5\\mathcal{E}}{6R}e^{-\\frac{5t}{6RC}}$$",
+                        explain: "Standard RC discharge obeys $V_C(t) = V_0 e^{-t/\\tau}$ and $I(t) = V_C(t)/R_{eq}$."
+                    },
+                    {
+                        part: "(d) Branch Currents",
+                        q: "Find individual currents through $2R$ and $3R$ as functions of time.",
+                        ans: "$$I_{2R}(t) = \\frac{\\mathcal{E}}{2R}e^{-\\frac{5t}{6RC}}, \\quad I_{3R}(t) = \\frac{\\mathcal{E}}{3R}e^{-\\frac{5t}{6RC}}$$",
+                        explain: "Both resistors share the identical capacitor voltage $V_C(t)$ at all times."
+                    },
+                    {
+                        part: "(e) Energy Conservation Proof",
+                        q: "Show that total initial stored energy equals heat dissipated in resistors.",
+                        ans: "$$U_0 = \\frac{1}{2}C\\mathcal{E}^2, \\quad Q_{heat} = \\int_{0}^{\\infty} \\frac{V_C^2(t)}{R_{eq}} dt = \\frac{\\mathcal{E}^2}{R_{eq}} \\frac{\\tau}{2} = \\frac{1}{2}C\\mathcal{E}^2$$",
+                        explain: "Integrating $P(t) = V_C^2 / R_{eq}$ from $0$ to $\\infty$ yields exactly $U_0$."
+                    },
+                    {
+                        part: "(f) Time for 75% Energy Loss",
+                        q: "At what time has the capacitor lost 75% of its initial stored energy?",
+                        ans: "$$t = \\tau \\ln 2 = \\frac{6RC}{5}\\ln 2$$",
+                        explain: "Energy scales as $V_C^2(t) \\propto e^{-2t/\\tau}$. Losing 75% means 25% remains ($1/4$). Thus $e^{-2t/\\tau} = 1/4 \\implies -2t/\\tau = -\\ln 4 \\implies t = \\tau \\ln 2$."
+                    }
+                ],
+                pitfall: "Common mistake: forgetting that energy depends on $V_C^2$, so energy drops to 25% when voltage drops to 50%!"
+            },
+            "2": {
+                title: "Question 2 – Velocity Selector & Magnetic Mass Analyzer",
+                tags: ["Lorentz Force", "Velocity Selector", "Mass Spectrometer"],
+                statement: "Singly charged positive ions ($+q$) with masses $m$ and $m+\\Delta m$ pass through crossed uniform fields $\\vec{E}=E\\hat{y}$ and $\\vec{B}_1 = B_1\\hat{z}$. Undeflected ions enter an analyzer with $\\vec{B}_2 = B_2\\hat{z}$ executing semicircular paths to a detector.",
+                subparts: [
+                    {
+                        part: "(a) Velocity Selection",
+                        q: "Determine selected speed $v$ and direction of magnetic force in selector.",
+                        ans: "$$v = \\frac{E}{B_1}, \\quad \\vec{F}_B = -qvB_1\\hat{y}$$",
+                        explain: "Electric force is $\\vec{F}_E = qE\\hat{y}$. Magnetic force is $q(\\vec{v}\\times\\vec{B}_1) = q(v\\hat{x}\\times B_1\\hat{z}) = -qvB_1\\hat{y}$. Balance $qE = qvB_1$ gives $v = E/B_1$."
+                    },
+                    {
+                        part: "(b) Path Radius in Analyzer",
+                        q: "Find radius $r(m)$ of the semicircular path.",
+                        ans: "$$r(m) = \\frac{mv}{qB_2} = \\frac{mE}{qB_1 B_2}$$",
+                        explain: "Magnetic force acts as centripetal force: $qvB_2 = mv^2/r$."
+                    },
+                    {
+                        part: "(c) Impact Position",
+                        q: "Find distance $x(m)$ from entrance to impact point.",
+                        ans: "$$x(m) = 2r(m) = \\frac{2mE}{qB_1 B_2}$$",
+                        explain: "A full semicircle spans a diameter $2r$."
+                    },
+                    {
+                        part: "(d) Mass Separation",
+                        q: "Find separation $\\Delta x$ between impact points of $m$ and $m+\\Delta m$.",
+                        ans: "$$\\Delta x = \\frac{2E}{qB_1 B_2}\\Delta m, \\quad \\text{so } \\frac{\\Delta x}{x} = \\frac{\\Delta m}{m}$$",
+                        explain: "Because $x$ is linear in $m$, $\\Delta x = x(m+\\Delta m) - x(m) = 2(\\Delta m)E / (qB_1 B_2)$."
+                    },
+                    {
+                        part: "(e) Field Reversal",
+                        q: "If $\\vec{B}_2 = -B_2\\hat{z}$, explain what changes.",
+                        ans: "Bending side flips (deflects to $-\\hat{y}$ side). Impact distance $x = 2r$ is unchanged.",
+                        explain: "Reversing magnetic field reverses the vector cross product direction, bending the ion to the opposite side while magnitude $r = mv/(q|B_2|)$ is identical."
+                    },
+                    {
+                        part: "(f) Negative Charge",
+                        q: "State curvature direction and impact distance for charge $-q$.",
+                        ans: "Curvature reverses. Impact distance magnitude $x = \\frac{2mv}{|q|B_2}$ remains identical.",
+                        explain: "Sign flip on charge reverses force direction vector."
+                    }
+                ],
+                pitfall: "Remember impact distance on a flat detector plate is the diameter $2r$, not just radius $r$!"
+            },
+            "3": {
+                title: "Question 3 – Cylinder with Off-Axis Cavity",
+                tags: ["Ampère's Law", "Superposition", "Vector Cross Product"],
+                statement: "A long cylinder of radius $R$ carries current density $\\vec{J} = J\\hat{z}$. A cylindrical cavity of radius $R/4$ parallel to $z$-axis is displaced by $\\vec{d} = \\frac{R}{2}\\hat{x}$.",
+                subparts: [
+                    {
+                        part: "(a) Field Inside Full Cylinder",
+                        q: "Find magnetic field inside solid uniform cylinder at position vector $\\vec{r}$ ($r < R$).",
+                        ans: "$$\\vec{B}(\\vec{r}) = \\frac{\\mu_0 J}{2}(\\hat{z} \\times \\vec{r})$$",
+                        explain: "By Ampère's law, $B(2\\pi r) = \\mu_0 (J \\pi r^2) \\implies B = \\frac{\\mu_0 J r}{2}$. In vector form, $\\hat{z}\\times\\vec{r}$ points in azimuthal $\\hat{\\phi}$ direction."
+                    },
+                    {
+                        part: "(b) Uniform Field inside Cavity",
+                        q: "Use superposition to prove field inside cavity is uniform.",
+                        ans: "$$\\vec{B}_{cavity} = \\frac{\\mu_0 J}{2}(\\hat{z} \\times \\vec{r}) - \\frac{\\mu_0 J}{2}(\\hat{z} \\times \\vec{r}') = \\frac{\\mu_0 J}{2}\\hat{z} \\times (\\vec{r} - \\vec{r}') = \\frac{\\mu_0 J}{2}(\\hat{z} \\times \\vec{d})$$",
+                        explain: "Superpose full solid cylinder with density $+J\\hat{z}$ and smaller cavity cylinder with density $-J\\hat{z}$. Since $\\vec{r} - \\vec{r}' = \\vec{d}$, the field depends ONLY on constant vector $\\vec{d}$!"
+                    },
+                    {
+                        part: "(c) Specific Cavity Field",
+                        q: "Evaluate magnitude and direction for $\\vec{d} = \\frac{R}{2}\\hat{x}$.",
+                        ans: "$$\\vec{B}_{cavity} = \\frac{\\mu_0 J R}{4}\\hat{y}$$",
+                        explain: "Using $\\hat{z}\\times\\hat{x} = \\hat{y}$, $\\vec{B} = \\frac{\\mu_0 J}{2}\\left(\\hat{z}\\times \\frac{R}{2}\\hat{x}\\right) = \\frac{\\mu_0 JR}{4}\\hat{y}$."
+                    },
+                    {
+                        part: "(d) Total Current",
+                        q: "Find total current carried by the conductor.",
+                        ans: "$$I_{total} = J \\left(\\pi R^2 - \\pi\\left(\\frac{R}{4}\\right)^2\\right) = \\frac{15\\pi J R^2}{16}$$",
+                        explain: "Subtract cavity cross-sectional area from main circle area."
+                    },
+                    {
+                        part: "(e) Field at External Point P=(2R, 0)",
+                        q: "Find magnetic field at point $P$ on $x$-axis at $x = 2R$.",
+                        ans: "$$\\vec{B}(P) = \\frac{11\\mu_0 J R}{48}\\hat{y}$$",
+                        explain: "Full cylinder field at $2R$: $B_1 = \\frac{\\mu_0 (J\\pi R^2)}{2\\pi(2R)}\\hat{y} = \\frac{\\mu_0 JR}{4}\\hat{y}$. Cavity center is at $x=R/2$, so distance to $P$ is $3R/2$. Negative cavity field: $B_2 = -\\frac{\\mu_0 (J\\pi R^2/16)}{2\\pi(3R/2)}\\hat{y} = -\\frac{\\mu_0 JR}{48}\\hat{y}$. Sum = $\\frac{11}{48}\\mu_0 JR \\hat{y}$."
+                    },
+                    {
+                        part: "(f) Why Ampère's Law Alone Fails",
+                        q: "Explain why Ampère's law alone cannot directly yield the field in part (b).",
+                        ans: "Loss of cylindrical symmetry around any single axis prevents pulling $|B|$ out of the line integral $\\oint \\vec{B}\\cdot d\\vec{l}$.",
+                        explain: "Ampère's law remains 100% valid, but without continuous spatial rotational symmetry, $B$ is not constant along Amperian paths."
+                    }
+                ],
+                pitfall: "Remember vector superposition! Subtracting two cylinder fields yields a completely UNIFORM magnetic field inside the hole."
+            },
+            "4": {
+                title: "Question 4 – Faraday Induction for Moving Loop near Long Wire",
+                tags: ["Faraday's Law", "Lenz's Law", "Motional EMF"],
+                statement: "A long wire along $y$-axis carries time-dependent current $I(t) = I_0 + kt$. A loop of width $w$, length $\\ell$, resistance $R$ moves away with constant speed $v$ ($x(t) = a + vt$).",
+                subparts: [
+                    {
+                        part: "(a) Wire Field",
+                        q: "Find magnetic field at distance $r$ from wire.",
+                        ans: "$$\\vec{B}(r,t) = -\\frac{\\mu_0 I(t)}{2\\pi r}\\hat{z} \\quad \\text{(pointing into page for } x > 0\\text{)}$$",
+                        explain: "Standard Biot-Savart / Ampère field for an infinite straight wire."
+                    },
+                    {
+                        part: "(b) Magnetic Flux",
+                        q: "Find flux $\\Phi_B(t)$ through rectangular loop (out of page normal).",
+                        ans: "$$\\Phi_B(t) = -\\frac{\\mu_0 \\ell I(t)}{2\\pi}\\ln\\left(\\frac{x+w}{x}\\right)$$",
+                        explain: "Integrate $\\int B dA = \\int_{x}^{x+w} -\\frac{\\mu_0 I(t)}{2\\pi r} (\\ell dr) = -\\frac{\\mu_0 \\ell I(t)}{2\\pi}\\ln\\left(\\frac{x+w}{x}\\right)$."
+                    },
+                    {
+                        part: "(c) Induced EMF",
+                        q: "Find $\\mathcal{E}_{ind}(t)$ accounting for changing current AND loop motion.",
+                        ans: "$$\\mathcal{E}_{ind}(t) = \\frac{\\mu_0 \\ell}{2\\pi}\\left[ k \\ln\\left(\\frac{x+w}{x}\\right) - \\frac{I(t) v w}{x(x+w)} \\right]$$",
+                        explain: "Use product rule on $\\Phi_B = -\\frac{\\mu_0\\ell}{2\\pi}I(t)f(x)$: $\\mathcal{E}_{ind} = -\\frac{d\\Phi_B}{dt} = \\frac{\\mu_0\\ell}{2\\pi}\\left[ \\frac{dI}{dt}f(x) + I(t)\\frac{df}{dx}\\frac{dx}{dt} \\right]$ where $f(x)=\\ln(\\frac{x+w}{x})$ and $\\frac{df}{dx} = -\\frac{w}{x(x+w)}$."
+                    },
+                    {
+                        part: "(d) Physical Interpretation of Lenz's Law",
+                        q: "Explain opposing physical directions of current terms.",
+                        ans: "Increasing $I(t)$ induces CCW current; moving away induces CW current.",
+                        explain: "Increasing $I$ increases into-page flux, inducing CCW current to create out-of-page flux. Moving away weakens into-page flux, inducing CW current to boost into-page flux."
+                    },
+                    {
+                        part: "(e) EMF Cancellation Condition",
+                        q: "Find condition for $\\mathcal{E}_{ind} = 0$.",
+                        ans: "$$k = \\frac{I(t) v w}{x(x+w)\\ln\\left(\\frac{x+w}{x}\\right)}$$",
+                        explain: "Set bracket term in part (c) equal to zero."
+                    },
+                    {
+                        part: "(f) Motional EMF Alternative (k=0)",
+                        q: "For $k=0$, show agreement using $\\oint (\\vec{v}\\times\\vec{B})\\cdot d\\vec{l}$.",
+                        ans: "$$\\mathcal{E}_{mot} = v\\ell [B(x) - B(x+w)] = v\\ell \\left[ \\frac{\\mu_0 I}{2\\pi x} - \\frac{\\mu_0 I}{2\\pi(x+w)} \\right] = \\frac{\\mu_0 I v \\ell w}{2\\pi x(x+w)}$$",
+                        explain: "Only two vertical sides cut flux lines; their motional emfs oppose each other."
+                    }
+                ],
+                pitfall: "Watch the chain rule! $\\frac{d}{dt}\\ln\\left(\\frac{x+w}{x}\\right) = \\frac{d}{dx}\\ln\\left(\\frac{x+w}{x}\\right) \\cdot \\frac{dx}{dt}$."
+            },
+            "5": {
+                title: "Question 5 – Toroidal Inductor & RL Transient",
+                tags: ["Toroid", "Self-Inductance", "RL Circuit", "Energy Conservation"],
+                statement: "A toroid has $N$ turns, rectangular cross section (height $h$, inner radius $a$, outer radius $b$), total resistance $R$. Connected to battery $\\mathcal{E}$ at $t=0$.",
+                subparts: [
+                    {
+                        part: "(a) Field Inside Toroid",
+                        q: "Find $B(r,t)$ inside core $a < r < b$.",
+                        ans: "$$B(r,t) = \\frac{\\mu_0 N I(t)}{2\\pi r}$$",
+                        explain: "Amperian loop of radius $r$ encloses $N$ turns carrying current $I(t)$: $B(2\\pi r) = \\mu_0 N I(t)$."
+                    },
+                    {
+                        part: "(b) Self-Inductance L",
+                        q: "Derive self-inductance $L$ of toroid.",
+                        ans: "$$L = \\frac{\\mu_0 N^2 h}{2\\pi}\\ln\\left(\\frac{b}{a}\\right)$$",
+                        explain: "Flux through 1 turn: $\\Phi_B = \\int_a^b B h dr = \\frac{\\mu_0 N I h}{2\\pi}\\ln(b/a)$. Total linkage $N\\Phi_B \\implies L = N\\Phi_B / I$."
+                    },
+                    {
+                        part: "(c) Current Transient",
+                        q: "Solve circuit equation for $I(t)$ with $I(0)=0$.",
+                        ans: "$$I(t) = \\frac{\\mathcal{E}}{R}\\left(1 - e^{-\\frac{Rt}{L}}\\right)$$",
+                        explain: "Standard RL loop rule equation $L\\frac{dI}{dt} + RI = \\mathcal{E}$."
+                    },
+                    {
+                        part: "(d) Inductor EMF",
+                        q: "Find $\\mathcal{E}_L(t)$ and its values at $t=0^+$ and $t\\to\\infty$.",
+                        ans: "$$\\mathcal{E}_L(t) = -\\mathcal{E}e^{-\\frac{Rt}{L}}, \\quad |\\mathcal{E}_L(0^+)| = \\mathcal{E}, \\quad |\\mathcal{E}_L(\\infty)| = 0$$",
+                        explain: "Initially inductor acts as open circuit opposing current jump; long-term acts as ideal wire."
+                    },
+                    {
+                        part: "(e) Stored Energy",
+                        q: "Find magnetic energy $U_B(t)$.",
+                        ans: "$$U_B(t) = \\frac{1}{2}LI(t)^2 = \\frac{L\\mathcal{E}^2}{2R^2}\\left(1 - e^{-\\frac{Rt}{L}}\\right)^2$$",
+                        explain: "Substitute $I(t)$ into $U_B = \\frac{1}{2}LI^2$."
+                    },
+                    {
+                        part: "(f) Power Conservation",
+                        q: "Show battery power equals resistor heating + inductor energy growth rate.",
+                        ans: "$$\\mathcal{E}I = I^2 R + \\frac{dU_B}{dt}$$",
+                        explain: "Multiply loop rule $\\mathcal{E} = IR + L\\frac{dI}{dt}$ by $I$, noting $\\frac{dU_B}{dt} = LI\\frac{dI}{dt}$."
+                    }
+                ],
+                pitfall: "Self-inductance $L$ depends on $N^2$ (turns squared), because $N$ appears in both $B$-field creation and flux linkage!"
+            },
+            "6": {
+                title: "Question 6 – Ampère-Maxwell Law for Charging Capacitor",
+                tags: ["Ampère-Maxwell Law", "Displacement Current", "Electric Flux"],
+                statement: "Parallel plate capacitor (circular plates radius $R$) charged by current $I(t) = I_0 e^{-t/T}$. Uncharged at $t=0$.",
+                subparts: [
+                    {
+                        part: "(a) Charge & Electric Field",
+                        q: "Find $Q(t)$ and uniform electric field $E(t)$.",
+                        ans: "$$Q(t) = I_0 T(1 - e^{-t/T}), \\quad E(t) = \\frac{I_0 T}{\\varepsilon_0 \\pi R^2}(1 - e^{-t/T})$$",
+                        explain: "Integrate $Q(t) = \\int_0^t I(t')dt'$. Field $E = Q / (\\varepsilon_0 A) = Q / (\\varepsilon_0 \\pi R^2)$."
+                    },
+                    {
+                        part: "(b) Electric Flux for r < R",
+                        q: "Find flux $\\Phi_E(r,t)$ through circular surface radius $r < R$.",
+                        ans: "$$\\Phi_E(r,t) = E(t) \\pi r^2 = \\frac{I_0 T r^2}{\\varepsilon_0 R^2}(1 - e^{-t/T})$$",
+                        explain: "Uniform field multiplied by enclosed surface area $\\pi r^2$."
+                    },
+                    {
+                        part: "(c) Induced B Field inside (r < R)",
+                        q: "Find $B(r,t)$ for $r < R$ using Ampère-Maxwell law.",
+                        ans: "$$B(r,t) = \\frac{\\mu_0 I(t) r}{2\\pi R^2} = \\frac{\\mu_0 I_0 r}{2\\pi R^2}e^{-t/T}$$",
+                        explain: "Between plates $I_{cond} = 0$. $\\oint \\vec{B}\\cdot d\\vec{l} = \\mu_0 \\varepsilon_0 \\frac{d\\Phi_E}{dt} \\implies B(2\\pi r) = \\mu_0 \\varepsilon_0 \\pi r^2 \\frac{dE}{dt} = \\mu_0 I(t) \\frac{r^2}{R^2}$."
+                    },
+                    {
+                        part: "(d) Induced B Field outside (r > R)",
+                        q: "Find $B(r,t)$ for $r > R$.",
+                        ans: "$$B(r,t) = \\frac{\\mu_0 I(t)}{2\\pi r} = \\frac{\\mu_0 I_0}{2\\pi r}e^{-t/T}$$",
+                        explain: "Total enclosed displacement current equals total wire current $I(t)$."
+                    },
+                    {
+                        part: "(e) Surface Independence Proof",
+                        q: "Show identical result whether surface cuts wire or bulges between plates.",
+                        ans: "Cutting wire gives $\\mu_0 I_{cond}$. Bulging gives $\\mu_0 I_D = \\mu_0 \\varepsilon_0 \\frac{d\\Phi_E}{dt} = \\mu_0 I(t)$. Both yield identical $B(r,t)$!",
+                        explain: "This confirms Maxwell's displacement current restores full physical consistency across all open spanning surfaces."
+                    },
+                    {
+                        part: "(f) Maximum B Field Radius",
+                        q: "Find radius where $B$ is maximum at any time.",
+                        ans: "$$r_{max} = R, \\quad B_{max}(t) = \\frac{\\mu_0 I(t)}{2\\pi R}$$",
+                        explain: "$B \\propto r$ inside and $B \\propto 1/r$ outside, matching continuously at plate edge $r=R$."
+                    }
+                ],
+                pitfall: "Inside plates ($r < R$), displacement current scales as area fraction $(r/R)^2$, making $B \\propto r$ linear!"
+            },
+            "7": {
+                title: "Question 7 – Biot-Savart Law for Annular-Sector Wire",
+                tags: ["Biot-Savart Law", "Circular Arc", "Superposition"],
+                statement: "Wire in $xy$-plane forms annular sector: inner arc $a$, outer arc $b$, angle $\\theta$. Current flows radially out at polar angle 0, CCW on outer arc $b$, radially in at angle $\\theta$, and CW on inner arc $a$.",
+                subparts: [
+                    {
+                        part: "(a) Arc Field Derivation",
+                        q: "Derive magnetic field at center $O$ due to circular arc $R$ subtending angle $\\theta$.",
+                        ans: "$$B_{arc} = \\frac{\\mu_0 I \\theta}{4\\pi R}$$",
+                        explain: "Biot-Savart: $dB = \\frac{\\mu_0 I}{4\\pi}\\frac{dl}{R^2}$. With $dl = R d\\phi$, integrate $d\\phi$ from $0$ to $\\theta$."
+                    },
+                    {
+                        part: "(b) Radial Segments Field",
+                        q: "Show radial straight segments produce zero field at $O$.",
+                        ans: "$$\\vec{B}_{radial} = 0$$",
+                        explain: "For radial segments, $d\\vec{l} \\parallel \\hat{r}$, so vector cross product $d\\vec{l} \\times \\hat{r} = 0$ everywhere."
+                    },
+                    {
+                        part: "(c) Net Magnetic Field at O",
+                        q: "Find net field magnitude and direction at $O$.",
+                        ans: "$$\\vec{B}_O = -\\frac{\\mu_0 I \\theta}{4\\pi}\\left(\\frac{1}{a} - \\frac{1}{b}\\right)\\hat{z} \\quad \\text{(into page)}$$",
+                        explain: "Outer arc CCW gives $+\\hat{z}$: $\\frac{\\mu_0 I\\theta}{4\\pi b}$. Inner arc CW gives $-\\hat{z}$: $-\\frac{\\mu_0 I\\theta}{4\\pi a}$. Net sum is into page because $1/a > 1/b$."
+                    },
+                    {
+                        part: "(d) Numerical Evaluation",
+                        q: "Evaluate for $\\theta = 3\\pi/2$ and $b=2a$.",
+                        ans: "$$\\vec{B}_O = -\\frac{3\\mu_0 I}{16a}\\hat{z}$$",
+                        explain: "Substitute $\\theta = 3\\pi/2$ and $(1/a - 1/2a) = 1/2a$: $\\frac{\\mu_0 I (3\\pi/2)}{4\\pi}\\frac{1}{2a} = \\frac{3\\mu_0 I}{16a}$."
+                    },
+                    {
+                        part: "(e) Cancellation Wire Position",
+                        q: "Find current $I_2$ in parallel wire at $x=c$ to cancel total field at $O$.",
+                        ans: "$$I_2 = \\frac{I \\theta c}{2}\\left(\\frac{1}{a} - \\frac{1}{b}\\right) \\quad \\text{in } +y \\text{ direction}$$",
+                        explain: "Sector field points into page ($-\\hat{z}$). Wire at $+c$ carrying $+y$ current produces out-of-page field ($+\\hat{z}$) at $O$. Equating $\\frac{\\mu_0 I_2}{2\\pi c} = B_O$ yields $I_2$."
+                    }
+                ],
+                pitfall: "Radial wire segments pointing toward/away from the evaluation point contribute ZERO magnetic field!"
+            },
+            "8": {
+                title: "Question 8 – Magnetic Dipole Torque & Small Oscillations",
+                tags: ["Magnetic Dipole", "Torque", "Potential Energy", "Simple Harmonic Motion"],
+                statement: "Rectangular coil ($N$ turns, sides $a,b$, current $I$, moment of inertia $I_{rot}$) rotates frictionlessly in uniform field $B$. Angle between magnetic moment $\\vec{\\mu}$ and $\\vec{B}$ is $\\theta$.",
+                subparts: [
+                    {
+                        part: "(a) Dipole Moment",
+                        q: "Write magnetic dipole moment $\\vec{\\mu}$.",
+                        ans: "$$\\vec{\\mu} = N I a b \\hat{n}$$",
+                        explain: "Magnitude $\\mu = N I A = N I a b$. Normal direction $\\hat{n}$ set by right-hand rule."
+                    },
+                    {
+                        part: "(b) Net Force vs Torque",
+                        q: "Why is net force zero, but torque non-zero?",
+                        ans: "In uniform field, equal and opposite forces on opposing loop sides sum to zero vector force, but form a couple producing restoring torque $\\tau = NIabB\\sin\\theta$.",
+                        explain: "Vector force sum $\\sum \\vec{F} = 0$, but torque $\\vec{\\tau} = \\vec{\\mu} \\times \\vec{B}$."
+                    },
+                    {
+                        part: "(c) Potential Energy & Stability",
+                        q: "Find $U(\\theta)$ and identify equilibrium orientations.",
+                        ans: "$$U(\\theta) = -NIabB \\cos\\theta \\implies \\theta=0 \\text{ (stable min)}, \\quad \\theta=\\pi \\text{ (unstable max)}$$",
+                        explain: "Dipole potential energy is $U = -\\vec{\\mu}\\cdot\\vec{B} = -\\mu B \\cos\\theta$."
+                    },
+                    {
+                        part: "(d) Rotational Equation of Motion",
+                        q: "Derive exact rotational equation of motion.",
+                        ans: "$$I_{rot} \\ddot{\\theta} + NIabB \\sin\\theta = 0$$",
+                        explain: "Apply $I_{rot}\\alpha = \\tau_{restoring} = -NIabB\\sin\\theta$."
+                    },
+                    {
+                        part: "(e) Small Oscillation Frequency",
+                        q: "For small $\\theta$, find oscillation angular frequency $\\omega$.",
+                        ans: "$$\\omega = \\sqrt{\\frac{NIabB}{I_{rot}}}$$",
+                        explain: "For small angles $\\sin\\theta \\approx \\theta$, yielding SHM equation $\\ddot{\\theta} + \\omega^2 \\theta = 0$."
+                    },
+                    {
+                        part: "(f) Equilibrium Angular Speed",
+                        q: "Find angular speed at $\\theta=0$ when released from rest at $\\theta_0$.",
+                        ans: "$$\\dot{\\theta} = \\sqrt{\\frac{2NIabB}{I_{rot}}(1 - \\cos\\theta_0)}$$",
+                        explain: "Apply energy conservation: $\\frac{1}{2}I_{rot}\\dot{\\theta}^2 - \\mu B = -\\mu B \\cos\\theta_0$."
+                    }
+                ],
+                pitfall: "Remember to use small-angle approximation $\\sin\\theta \\approx \\theta$ to map rotational dynamics directly to Simple Harmonic Motion!"
+            },
+            "9": {
+                title: "Question 9 – Three Parallel Wires & Magnetic Stability",
+                tags: ["Parallel Wires", "Force per Length", "Equilibrium Stability", "Oscillations"],
+                statement: "Two fixed long wires at $x = -a$ and $x = +a$ carry current $+I\\hat{z}$. A third movable wire between them carries current magnitude $I_c$ and has mass per unit length $\\lambda_M$.",
+                subparts: [
+                    {
+                        part: "(a) Parallel Wire Force",
+                        q: "Derive force per unit length between two long parallel wires separated by $d$.",
+                        ans: "$$\\frac{F}{L} = \\frac{\\mu_0 I_1 I_2}{2\\pi d} \\quad \\text{(attractive if parallel, repulsive if antiparallel)}$$",
+                        explain: "$B_1 = \\frac{\\mu_0 I_1}{2\\pi d}$. Force on length $L$: $F = I_2 L B_1$."
+                    },
+                    {
+                        part: "(b) Symmetry at Origin",
+                        q: "Show net force at $x=0$ is zero.",
+                        ans: "$$F_x = 0$$",
+                        explain: "Equal distances $a$ to both fixed wires create equal and opposite attractive forces."
+                    },
+                    {
+                        part: "(c) Parallel Current Case (+Ic)",
+                        q: "Derive force at position $x$ for $+I_c\\hat{z}$ and determine stability.",
+                        ans: "$$\\frac{F_x}{L} = \\frac{\\mu_0 I I_c}{\\pi}\\frac{x}{a^2 - x^2} \\implies \\text{UNSTABLE equilibrium at } x=0$$",
+                        explain: "Displacing toward $+x$ decreases distance to right wire $(a-x)$, making rightward attraction stronger than leftward pull. Force pushes wire FARTHER away!"
+                    },
+                    {
+                        part: "(d) Reversed Current Case (-Ic)",
+                        q: "Derive force for reversed middle current $-I_c\\hat{z}$ and determine stability.",
+                        ans: "$$\\frac{F_x}{L} = -\\frac{\\mu_0 I I_c}{\\pi}\\frac{x}{a^2 - x^2} \\implies \\text{STABLE equilibrium at } x=0$$",
+                        explain: "Reversing current changes attractions to repulsions. Nearer wire repels more strongly, pushing middle wire BACK toward center!"
+                    },
+                    {
+                        part: "(e) Small Oscillation Frequency",
+                        q: "For reversed current and $|x| \\ll a$, find angular frequency $\\omega$.",
+                        ans: "$$\\omega = \\sqrt{\\frac{\\mu_0 I I_c}{\\pi \\lambda_M a^2}}$$",
+                        explain: "For $x \\ll a$, $a^2 - x^2 \\approx a^2$. Equation of motion: $\\lambda_M \\ddot{x} = -\\left(\\frac{\\mu_0 I I_c}{\\pi a^2}\\right)x \\implies \\ddot{x} + \\omega^2 x = 0$."
+                    }
+                ],
+                pitfall: "Parallel currents ATTRACT, antiparallel currents REPEL! Getting the sign of force relative to displacement $x$ determines stability vs instability."
+            },
+            "10": {
+                title: "Question 10 – Sliding Rod, Motional EMF & Magnetic Braking",
+                tags: ["Motional EMF", "Magnetic Braking", "Terminal Velocity", "Energy Balance"],
+                statement: "Rod of mass $m$, length $\\ell$ slides frictionlessly on rails connected by resistor $R$ in magnetic field $\\vec{B} = -B\\hat{z}$. Pulled rightward from rest by constant force $F_0$.",
+                subparts: [
+                    {
+                        part: "(a) Motional EMF & Direction",
+                        q: "Find motional emf magnitude and induced current direction.",
+                        ans: "$$\\mathcal{E}_{mot} = B\\ell v \\quad \\text{inducing CCW current (upward through rod)}$$",
+                        explain: "Flux into page increases as loop expands. By Lenz's law, induced current creates out-of-page flux (CCW)."
+                    },
+                    {
+                        part: "(b) Magnetic Drag Force",
+                        q: "Find induced current and magnetic force on rod.",
+                        ans: "$$I_{ind} = \\frac{B\\ell v}{R}, \\quad \\vec{F}_B = -\\frac{B^2 \\ell^2 v}{R}\\hat{x}$$",
+                        explain: "Magnetic force $F_B = I_{ind}\\ell B = \\frac{B^2 \\ell^2 v}{R}$ opposes motion (magnetic braking drag)."
+                    },
+                    {
+                        part: "(c) Differential Equation & Terminal Speed",
+                        q: "Write differential equation, find terminal speed $v_{term}$ and time constant $\\tau$.",
+                        ans: "$$m\\frac{dv}{dt} = F_0 - \\frac{B^2 \\ell^2}{R}v \\implies v_{term} = \\frac{F_0 R}{B^2 \\ell^2}, \\quad \\tau = \\frac{m R}{B^2 \\ell^2}$$",
+                        explain: "Set $dv/dt = 0$ at terminal speed to balance external force against magnetic drag."
+                    },
+                    {
+                        part: "(d) Velocity Solution",
+                        q: "Solve $v(t)$ for $v(0)=0$.",
+                        ans: "$$v(t) = v_{term}\\left(1 - e^{-t/\\tau}\\right)$$",
+                        explain: "Standard first-order exponential velocity rise."
+                    },
+                    {
+                        part: "(e) Position vs Time",
+                        q: "Find displacement $\\Delta x(t)$.",
+                        ans: "$$\\Delta x(t) = v_{term}\\left[ t - \\tau\\left(1 - e^{-t/\\tau}\\right) \\right]$$",
+                        explain: "Integrate $v(t)$ from $0$ to $t$."
+                    },
+                    {
+                        part: "(f) Power Conservation",
+                        q: "Show applied mechanical power equals kinetic energy rate + resistor heating.",
+                        ans: "$$F_0 v = \\frac{d}{dt}\\left(\\frac{1}{2}mv^2\\right) + I_{ind}^2 R$$",
+                        explain: "Multiply Newton's law $F_0 = m\\frac{dv}{dt} + F_B$ by $v$. At terminal velocity, $dK/dt = 0$, so ALL mechanical work becomes Joule heat!"
+                    }
+                ],
+                pitfall: "At terminal velocity, acceleration is ZERO, so input mechanical power $F_0 v_{term}$ exactly balances electrical dissipation $I^2 R$!"
+            }
+        };
+
+        // Quiz Question Store
+        const quizQuestions = [
+            {
+                q: "In Question 3, why is the magnetic field inside the off-axis cylindrical cavity completely uniform?",
+                opts: [
+                    "Because Ampère's law applies directly to any irregular loop.",
+                    "Because vector superposition of two uniform current distributions cancels spatial dependence.",
+                    "Because the cavity has no current flowing through it.",
+                    "Because magnetic fields cannot penetrate conductor boundaries."
+                ],
+                correct: 1,
+                explain: "Superposing a full cylinder field $\\frac{\\mu_0 J}{2}\\hat{z}\\times\\vec{r}$ and a negative cavity cylinder field $-\\frac{\\mu_0 J}{2}\\hat{z}\\times\\vec{r}'$ yields $\\frac{\\mu_0 J}{2}\\hat{z}\\times(\\vec{r}-\\vec{r}') = \\frac{\\mu_0 J}{2}\\hat{z}\\times\\vec{d}$, which is independent of position!"
+            },
+            {
+                q: "In Question 6 (Charging Capacitor), what produces the magnetic field between the capacitor plates where no conduction current exists?",
+                opts: [
+                    "Static electric charge on the plates.",
+                    "Fringing fields at the boundary.",
+                    "Time-varying electric flux (Displacement Current).",
+                    "Thermal noise in the dielectric."
+                ],
+                correct: 2,
+                explain: "Maxwell added the displacement current term $I_D = \\varepsilon_0 \\frac{d\\Phi_E}{dt}$, which generates a magnetic field between charging plates."
+            },
+            {
+                q: "In Question 9, why does reversing the middle wire current from $+I_c$ to $-I_c$ make the equilibrium at $x=0$ STABLE?",
+                opts: [
+                    "Because parallel currents repel each other.",
+                    "Because antiparallel currents repel, pushing a displaced wire back toward the center.",
+                    "Because magnetic fields cancel out completely everywhere.",
+                    "Because mass per unit length increases."
+                ],
+                correct: 1,
+                explain: "With reversed current, the middle wire is repelled by both outer wires. Moving closer to the right wire increases rightward repulsion, forcing the wire back leftward toward $x=0$."
+            },
+            {
+                q: "In Question 10 (Sliding Rod Braking), what happens to external mechanical power $F_0 v$ once terminal velocity is reached?",
+                opts: [
+                    "It is converted into stored magnetic field energy.",
+                    "It is continuously converted into kinetic energy.",
+                    "It is completely dissipated as Joule heating ($I^2 R$) in the resistor.",
+                    "It becomes zero."
+                ],
+                correct: 2,
+                explain: "At terminal velocity, speed is constant ($dK/dt = 0$). Power balance requires $F_0 v_{term} = I_{ind}^2 R$."
+            }
+        ];
+
+        // UI Logic Controller
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('text-slate-300');
+            });
+
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-blue-600', 'text-white');
+                activeBtn.classList.remove('text-slate-300');
+            }
+
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function loadProblem(key) {
+            const prob = problemsData[key];
+            if (!prob) return;
+
+            let html = `
+                <div class="p-6 bg-slate-900 text-white border-b border-slate-800">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        ${prob.tags.map(t => `<span class="px-2.5 py-1 bg-blue-500/20 text-blue-300 border border-blue-500/30 rounded-full text-xs font-semibold">${t}</span>`).join('')}
+                    </div>
+                    <h3 class="text-xl font-bold">${prob.title}</h3>
+                    <p class="text-slate-300 text-sm mt-2 leading-relaxed bg-slate-800/80 p-4 rounded-lg border border-slate-700">${prob.statement}</p>
+                </div>
+                <div class="p-6 space-y-6">
+                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider">Step-by-Step Subpart Solutions</h4>
+                    <div class="grid grid-cols-1 gap-4">
+            `;
+
+            prob.subparts.forEach((sp, idx) => {
+                html += `
+                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 hover:bg-white transition-colors space-y-2">
+                        <div class="flex justify-between items-start">
+                            <span class="font-bold text-blue-700 text-sm">${sp.part}</span>
+                            <button onclick="toggleAnswer('sp-${key}-${idx}')" class="text-xs text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1">
+                                <i data-lucide="eye" class="w-3.5 h-3.5"></i> Toggle Answer
+                            </button>
+                        </div>
+                        <p class="text-xs font-medium text-slate-800">${sp.q}</p>
+                        <div id="sp-${key}-${idx}" class="hidden mt-3 pt-3 border-t border-slate-200 space-y-2">
+                            <div class="p-3 bg-blue-50/80 rounded-lg text-xs font-mono text-blue-950 overflow-x-auto">${sp.ans}</div>
+                            <p class="text-xs text-slate-600 leading-relaxed"><strong class="text-slate-800">Explanation:</strong> ${sp.explain}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+                    <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 flex items-start space-x-3">
+                        <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
+                        <div>
+                            <strong class="font-bold">Exam Pitfall Warning:</strong> ${prob.pitfall}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('problem-display').innerHTML = html;
+            lucide.createIcons();
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden');
+        }
+
+        // Calculators Logic
+        function calcQ2() {
+            const E = parseFloat(document.getElementById('sim-q2-e').value) || 0;
+            const B1 = parseFloat(document.getElementById('sim-q2-b1').value) || 1;
+            const B2 = parseFloat(document.getElementById('sim-q2-b2').value) || 1;
+            const m_amu = parseFloat(document.getElementById('sim-q2-m').value) || 1;
+
+            const q = 1.602e-19;
+            const m = m_amu * 1.66e-27;
+
+            const v = E / B1;
+            const r = (m * v) / (q * B2);
+            const dx_per_amu = (2 * E * (1.66e-27)) / (q * B1 * B2);
+
+            document.getElementById('q2-out-v').innerText = v.toLocaleString(undefined, {maximumFractionDigits: 0}) + " m/s";
+            document.getElementById('q2-out-r').innerText = r.toFixed(3) + " m";
+            document.getElementById('q2-out-dx').innerText = (dx_per_amu * 100).toFixed(2) + " cm / amu";
+        }
+
+        function calcQ10() {
+            const F0 = parseFloat(document.getElementById('sim-q10-f').value) || 0;
+            const B = parseFloat(document.getElementById('sim-q10-b').value) || 0;
+            const l = parseFloat(document.getElementById('sim-q10-l').value) || 0;
+            const R = parseFloat(document.getElementById('sim-q10-r').value) || 1;
+
+            const vterm = (F0 * R) / (B * B * l * l);
+            const power = F0 * vterm;
+
+            document.getElementById('q10-out-v').innerText = vterm.toFixed(2) + " m/s";
+            document.getElementById('q10-out-p').innerText = power.toFixed(2) + " W";
+        }
+
+        function calcQ8() {
+            const N = parseFloat(document.getElementById('sim-q8-n').value) || 1;
+            const I = parseFloat(document.getElementById('sim-q8-i').value) || 0;
+            const B = parseFloat(document.getElementById('sim-q8-b').value) || 0;
+            const I_rot = parseFloat(document.getElementById('sim-q8-I').value) || 1;
+            const A = 0.05; // fixed representative area
+
+            const omega = Math.sqrt((N * I * A * B) / I_rot);
+            const period = (2 * Math.PI) / omega;
+
+            document.getElementById('q8-out-w').innerText = omega.toFixed(2) + " rad/s";
+            document.getElementById('q8-out-t').innerText = period.toFixed(3) + " s";
+        }
+
+        function calcQ5() {
+            const N = parseFloat(document.getElementById('sim-q5-n').value) || 1;
+            const h = parseFloat(document.getElementById('sim-q5-h').value) || 0;
+            const a = parseFloat(document.getElementById('sim-q5-a').value) || 0.01;
+            const b = parseFloat(document.getElementById('sim-q5-b').value) || 0.02;
+
+            const mu0 = 4 * Math.PI * 1e-7;
+            const L = (mu0 * N * N * h * Math.log(b / a)) / (2 * Math.PI);
+
+            document.getElementById('q5-out-l').innerText = (L * 1000).toFixed(3) + " mH";
+        }
+
+        // Quiz Generator & Scorer
+        let quizScore = 0;
+        let answeredCount = 0;
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            let html = '';
+
+            quizQuestions.forEach((q, qIdx) => {
+                html += `
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                        <p class="font-bold text-slate-900 text-sm">${qIdx + 1}. ${q.q}</p>
+                        <div class="space-y-2">
+                `;
+                q.opts.forEach((opt, oIdx) => {
+                    html += `
+                        <button onclick="checkAnswer(${qIdx}, ${oIdx}, this)" class="quiz-opt-${qIdx} w-full text-left p-3 text-xs rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors">
+                            ${opt}
+                        </button>
+                    `;
+                });
+                html += `
+                        </div>
+                        <div id="quiz-exp-${qIdx}" class="hidden p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-700 leading-relaxed">
+                            <strong>Explanation:</strong> ${q.explain}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function checkAnswer(qIdx, oIdx, btn) {
+            const q = quizQuestions[qIdx];
+            const buttons = document.querySelectorAll(`.quiz-opt-${qIdx}`);
+            buttons.forEach(b => b.disabled = true);
+
+            if (oIdx === q.correct) {
+                btn.classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900', 'font-semibold');
+                quizScore++;
+            } else {
+                btn.classList.add('bg-rose-100', 'border-rose-500', 'text-rose-900');
+                buttons[q.correct].classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900', 'font-semibold');
+            }
+
+            document.getElementById(`quiz-exp-${qIdx}`).classList.remove('hidden');
+            answeredCount++;
+            document.getElementById('quiz-score').innerText = `Score: ${quizScore} / ${quizQuestions.length}`;
+        }
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            loadProblem('1');
+            renderQuiz();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
+```eof
+
+An interactive study application has been generated for your PHYS 201 Electromagnetism final exam. 
+
+### What was built:
+1. **10 Final Practice Walkthrough Modules**: Complete breakdown of each question from your practice exam (RC circuits, Mass Spectrometers, Off-axis cavities, Moving Loop Faraday induction, RL Toroids, Displacement current, Biot-Savart annular sectors, Magnetic dipole oscillations, Parallel wire stability, and Magnetic braking).
+2. **Interactive Formula Sheet**: Formatted reference card covering all core laws, vectors, and units across every exam section.
+3. **Dynamic Physics Calculators**: Parameter calculators to test numerical outputs, terminal velocities, time constants, and oscillation frequencies.
+4. **Conceptual Knowledge Checkers**: Interactive flashcard quizzes with immediate step-by-step explanations for high-frequency exam pitfalls.
+
+Good luck with your final exam preparation!
